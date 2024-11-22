@@ -1,39 +1,73 @@
+/* Reset and Base Styling */
 body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #121212;
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    position: relative;
   }
   
+  /* Main Container */
   .container {
+    z-index: 2;
     text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: slideIn 2s ease-out forwards;
   }
   
+  /* Title Styling */
   .title {
     font-size: 4rem;
     font-weight: 700;
     color: #e63946;
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
   }
   
+  /* Subtitle Styling */
   .subtitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #bfbfbf;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
   }
   
+  /* Background Animation Layer */
+  .animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: #121212;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Canvas Layer for Fluid Math Animation */
+  .math-canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  /* Loading Dots */
   .loading-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
+    margin-top: 2rem;
   }
   
   .dot {
@@ -50,6 +84,18 @@ body {
   
   .dot:nth-child(3) {
     animation-delay: 0.6s;
+  }
+  
+  /* Text Animation */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   @keyframes bounce {
