@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Graph Variables */
   const graphTL = createConnectedGraph(
-    getRandomInt(3, 8), // Number of nodes between 3 and 8
-    0.5,                // Additional edge probability
+    getRandomInt(3, 6), // Number of nodes between 3 and 6 inclusive
+    0.3,                // Additional edge probability
     0,
     width / 3,
     0,
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   const graphBR = createConnectedGraph(
-    getRandomInt(3, 8),
-    0.5,
+    getRandomInt(3, 6),
+    0.3,
     (2 * width) / 3,
     width,
     (2 * height) / 3,
@@ -48,18 +48,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const node = {
         x: Math.random() * (xMax - xMin) + xMin,
         y: Math.random() * (yMax - yMin) + yMin,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
+        vx: (Math.random() - 0.5) * 1.0, // Increased velocity
+        vy: (Math.random() - 0.5) * 1.0
       };
       graph.nodes.push(node);
     }
 
-    // Ensure the graph is connected using a simple approach
-    for (let i = 1; i < numNodes; i++) {
-      graph.edges.push({ from: i - 1, to: i });
+    // Ensure the graph is connected
+    const connected = new Set();
+    connected.add(0);
+
+    while (connected.size < numNodes) {
+      const from = Array.from(connected)[Math.floor(Math.random() * connected.size)];
+      const to = getRandomInt(0, numNodes - 1);
+      if (!connected.has(to)) {
+        graph.edges.push({ from, to });
+        connected.add(to);
+      }
     }
 
-    // Optionally add additional edges
+    // Add random additional edges
     for (let i = 0; i < numNodes; i++) {
       for (let j = i + 1; j < numNodes; j++) {
         if (!edgeExists(graph.edges, i, j) && Math.random() < edgeProbability) {
@@ -81,13 +89,13 @@ document.addEventListener("DOMContentLoaded", () => {
   /* Update and Draw Graphs */
   function updateGraph(graph, xMin, xMax, yMin, yMax) {
     graph.nodes.forEach(node => {
-      // Random movement
-      node.vx += (Math.random() - 0.5) * 0.02;
-      node.vy += (Math.random() - 0.5) * 0.02;
+      // Random movement with increased acceleration
+      node.vx += (Math.random() - 0.5) * 0.1; // Increase acceleration
+      node.vy += (Math.random() - 0.5) * 0.1;
 
-      // Apply damping
-      node.vx *= 0.95;
-      node.vy *= 0.95;
+      // Apply less damping for more movement
+      node.vx *= 0.90; // Decrease damping
+      node.vy *= 0.90;
 
       // Update positions
       node.x += node.vx;
@@ -123,47 +131,39 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Continuous Sine Wave */
-  const waveParams = {
+  /* Sine Wave Variables */
+  const sineWave = {
     amplitude: 50,
-    wavelength: 200, // Normal sine wave period
-    frequency: 0.02,
+    frequency: 0.05,
     phase: 0,
-    speed: 2,
+    speed: 4,
     points: []
   };
 
   function updateWave() {
-    waveParams.phase += waveParams.frequency;
-
-    // Move all points to the left to create continuous movement
-    waveParams.points = waveParams.points.map(point => ({
-      x: point.x - waveParams.speed,
-      y: point.y
-    }));
-
-    // Remove points that are off-screen
-    waveParams.points = waveParams.points.filter(point => point.x >= 0);
+    sineWave.phase += sineWave.frequency;
 
     // Add new point at the end
-    const x = width;
-    const y =
-      waveParams.amplitude *
-        Math.sin(
-          (2 * Math.PI * (x / waveParams.wavelength)) +
-            waveParams.phase
-        ) +
-      height / 2;
+    const x = (sineWave.points.length > 0) ? sineWave.points[sineWave.points.length - 1].x + sineWave.speed : 0;
+    const y = sineWave.amplitude * Math.sin(x * 0.02 + sineWave.phase) + height / 2;
 
-    waveParams.points.push({ x, y });
+    sineWave.points.push({ x, y });
+
+    // Remove old points to create tail effect
+    if (sineWave.points.length > 300) { // Adjust length of tail
+      sineWave.points.shift();
+    }
+
+    // Remove points that are off-screen
+    sineWave.points = sineWave.points.filter(point => point.x <= width);
   }
 
   function drawWave() {
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
     ctx.lineWidth = 2;
     ctx.beginPath();
 
-    waveParams.points.forEach((point, index) => {
+    sineWave.points.forEach((point, index) => {
       if (index === 0) {
         ctx.moveTo(point.x, point.y);
       } else {
