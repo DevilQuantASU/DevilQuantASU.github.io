@@ -1,5 +1,3 @@
-// scripts.js
-
 document.addEventListener("DOMContentLoaded", () => {
   /* Variables */
   const canvas = document.createElement('canvas');
@@ -45,11 +43,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generate nodes
     for (let i = 0; i < numNodes; i++) {
+      const initialX = Math.random() * (xMax - xMin) + xMin;
+      const initialY = Math.random() * (yMax - yMin) + yMin;
       const node = {
-        x: Math.random() * (xMax - xMin) + xMin,
-        y: Math.random() * (yMax - yMin) + yMin,
-        vx: (Math.random() - 0.5) * 1.0, // Increased velocity
-        vy: (Math.random() - 0.5) * 1.0
+        initialX: initialX,
+        initialY: initialY,
+        x: initialX,
+        y: initialY,
+        angle: Math.random() * 2 * Math.PI,
+        angularVelocity: (Math.random() - 0.5) * 0.005, // Small random angular velocity
+        amplitudeX: (xMax - xMin) / 4 * (0.5 + Math.random() / 2), // Between 50% and 100% of quarter width
+        amplitudeY: (yMax - yMin) / 4 * (0.5 + Math.random() / 2)
       };
       graph.nodes.push(node);
     }
@@ -87,25 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* Update and Draw Graphs */
-  function updateGraph(graph, xMin, xMax, yMin, yMax) {
+  function updateGraph(graph) {
     graph.nodes.forEach(node => {
-      // Random movement with increased acceleration
-      node.vx += (Math.random() - 0.5) * 0.1; // Increase acceleration
-      node.vy += (Math.random() - 0.5) * 0.1;
+      // Update angle
+      node.angle += node.angularVelocity;
 
-      // Apply less damping for more movement
-      node.vx *= 0.90; // Decrease damping
-      node.vy *= 0.90;
-
-      // Update positions
-      node.x += node.vx;
-      node.y += node.vy;
-
-      // Keep nodes within bounds (wrap around)
-      if (node.x < xMin) node.x = xMax;
-      if (node.x > xMax) node.x = xMin;
-      if (node.y < yMin) node.y = yMax;
-      if (node.y > yMax) node.y = yMin;
+      // Update positions using smooth sinusoidal functions
+      node.x = node.initialX + node.amplitudeX * Math.cos(node.angle);
+      node.y = node.initialY + node.amplitudeY * Math.sin(node.angle);
     });
   }
 
@@ -131,62 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Sine Wave Variables */
-  const sineWave = {
-    amplitude: 50,
-    frequency: 0.05,
-    phase: 0,
-    speed: 4,
-    points: []
-  };
-
-  function updateWave() {
-    sineWave.phase += sineWave.frequency;
-
-    // Add new point at the end
-    const x = (sineWave.points.length > 0) ? sineWave.points[sineWave.points.length - 1].x + sineWave.speed : 0;
-    const y = sineWave.amplitude * Math.sin(x * 0.02 + sineWave.phase) + height / 2;
-
-    sineWave.points.push({ x, y });
-
-    // Remove old points to create tail effect
-    if (sineWave.points.length > 300) { // Adjust length of tail
-      sineWave.points.shift();
-    }
-
-    // Remove points that are off-screen
-    sineWave.points = sineWave.points.filter(point => point.x <= width);
-  }
-
-  function drawWave() {
-    ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-
-    sineWave.points.forEach((point, index) => {
-      if (index === 0) {
-        ctx.moveTo(point.x, point.y);
-      } else {
-        ctx.lineTo(point.x, point.y);
-      }
-    });
-
-    ctx.stroke();
-  }
-
   /* Animation Loop */
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Update and draw wave
-  //  updateWave();
-  //  drawWave();
-
     // Update and draw graphs
-    updateGraph(graphTL, 0, width / 3, 0, height / 3);
+    updateGraph(graphTL);
     drawGraph(graphTL);
 
-    updateGraph(graphBR, (2 * width) / 3, width, (2 * height) / 3, height);
+    updateGraph(graphBR);
     drawGraph(graphBR);
 
     requestAnimationFrame(animate);
