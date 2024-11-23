@@ -179,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.clearRect(0, 0, width, height);
 
     // Update and draw wave
-    updateWave();
-    drawWave();
+  //  updateWave();
+  //  drawWave();
 
     // Update and draw graphs
     updateGraph(graphTL, 0, width / 3, 0, height / 3);
