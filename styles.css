@@ -4,12 +4,14 @@ body {
     font-family: 'Open Sans', sans-serif;
     color: #000;
     background-color: #fff;
+    text-align: center; /* Center all text content */
 }
 
 /* Container */
 .container {
     width: 80%;
     margin: 0 auto;
+    max-width: 1200px;
 }
 
 /* Header */
@@ -18,9 +20,10 @@ body {
     color: black;
     padding: 20px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center header content */
     align-items: center;
     border-bottom: 3px solid #8C1D40;
+    text-align: center;
 }
 
 .header .logo h1 {
@@ -28,6 +31,14 @@ body {
     font-size: 28px;
     font-weight: 700;
     color: #8C1D40; /* ASU Maroon */
+    text-align: center;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: center; /* Center navigation */
+    width: 100%;
 }
 
 .nav ul {
@@ -35,10 +46,11 @@ body {
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: center; /* Center nav links */
 }
 
 .nav ul li {
-    margin-left: 25px;
+    margin: 0 20px;
 }
 
 .nav ul li a {
@@ -64,11 +76,15 @@ body {
 .hero h2 {
     font-size: 36px;
     font-weight: 700;
+    margin-bottom: 10px;
 }
 
 .hero p {
     font-size: 20px;
     margin-bottom: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero .button {
@@ -80,6 +96,8 @@ body {
     font-weight: 700;
     font-size: 18px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .hero .button:hover {
@@ -110,20 +128,24 @@ body {
 /* Leadership Section */
 .leadership {
     padding: 60px 0;
-    text-align: left;
+    text-align: center; /* Ensure section is centered */
 }
 
 .leadership h2 {
-    text-align: center;
     font-size: 28px;
     font-weight: 700;
     color: #8C1D40; /* ASU Maroon */
+    margin-bottom: 20px;
 }
 
 .team-member {
     border-left: 5px solid #8C1D40;
     padding-left: 20px;
     margin-bottom: 30px;
+    display: inline-block;
+    text-align: left;
+    max-width: 600px;
+    width: 100%;
 }
 
 .team-member h4 {
@@ -156,10 +178,11 @@ body {
     list-style: none;
     padding: 0;
     margin-top: 15px;
+    text-align: center;
 }
 
 .footer-links li {
-    display: inline;
+    display: inline-block;
     margin: 0 20px;
 }
 
