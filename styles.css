@@ -1,0 +1,130 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    display: inline-block;
+    margin: 0;
+    padding: 20px 0;
+}
+
+header nav {
+    display: inline-block;
+    float: right;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 20px 0;
+}
+
+/* Intro Section */
+.intro {
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.intro h2 {
+    margin: 0 0 20px;
+}
+
+.intro .button {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* About Section */
+.about {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: 20px;
+}
+
+/* Team Section */
+.team {
+    background-color: #f8f8f8;
+    padding: 50px 0;
+}
+
+.team .team-member {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.team .team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.team .team-member h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.team .team-member p {
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .social-icons {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+footer .social-icons li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+footer .social-icons li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer p {
+    margin 
