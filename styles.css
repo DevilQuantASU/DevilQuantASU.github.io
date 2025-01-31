@@ -1,8 +1,9 @@
 /* General Styles */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
+    font-family: 'Open Sans', sans-serif;
+    color: #000;
+    background-color: #fff;
 }
 
 /* Container */
@@ -12,56 +13,61 @@ body {
 }
 
 /* Header */
-header {
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #ddd;
-}
-
-header h1 {
-    display: inline-block;
-    margin: 0;
+.header {
+    background-color: black;
+    color: white;
     padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header nav {
-    display: inline-block;
-    float: right;
-}
-
-header nav ul {
-    list-style: none;
+.header .logo h1 {
     margin: 0;
-    padding: 0;
+    font-size: 24px;
 }
 
-header nav ul li {
-    display: inline-block;
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav ul li {
     margin-left: 20px;
 }
 
-header nav ul li a {
+.nav ul li a {
     text-decoration: none;
-    color: #333;
-    padding: 20px 0;
+    color: white;
+    font-weight: 600;
 }
 
-/* Intro Section */
-.intro {
-    background-color: #e0e0e0;
+/* Hero Section */
+.hero {
+    background-color: #8C1D40; /* ASU Maroon */
+    color: white;
     text-align: center;
-    padding: 50px 0;
+    padding: 60px 0;
 }
 
-.intro h2 {
-    margin: 0 0 20px;
+.hero h2 {
+    font-size: 28px;
 }
 
-.intro .button {
-    background-color: #333;
-    color: #fff;
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hero .button {
+    background-color: white;
+    color: #8C1D40;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
+    font-weight: bold;
 }
 
 /* About Section */
@@ -71,60 +77,67 @@ header nav ul li a {
 }
 
 .about h2 {
-    margin-bottom: 20px;
+    color: black;
+    font-size: 24px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
 }
 
 /* Team Section */
 .team {
-    background-color: #f8f8f8;
-    padding: 50px 0;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.team h3 {
+    color: #8C1D40;
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .team .team-member {
-    text-align: center;
-    margin-bottom: 30px;
+    border-left: 5px solid #8C1D40;
+    padding-left: 15px;
+    margin-bottom: 20px;
 }
 
-.team .team-member img {
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-}
-
-.team .team-member h3 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-}
-
-.team .team-member p {
-    margin: 0;
+.team .team-member h4 {
+    margin-bottom: 5px;
+    color: black;
+    font-size: 20px;
 }
 
 /* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
+.footer {
+    background-color: black;
+    color: white;
     text-align: center;
     padding: 20px 0;
 }
 
-footer .social-icons {
-    list-style: none;
+.footer p {
     margin: 0;
+    font-size: 14px;
+}
+
+.footer-links {
+    list-style: none;
     padding: 0;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
-footer .social-icons li {
-    display: inline-block;
-    margin: 0 10px;
+.footer-links li {
+    display: inline;
+    margin: 0 15px;
 }
 
-footer .social-icons li a {
-    color: #fff;
+.footer-links li a {
+    color: white;
     text-decoration: none;
+    font-weight: bold;
 }
-
-footer p {
-    margin 
