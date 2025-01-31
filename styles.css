@@ -20,12 +20,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #8C1D40;
+    border-bottom: 3px solid #8C1D40;
 }
 
 .header .logo h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #8C1D40; /* ASU Maroon */
 }
 
 .nav ul {
@@ -36,43 +38,103 @@ body {
 }
 
 .nav ul li {
-    margin-left: 20px;
+    margin-left: 25px;
 }
 
 .nav ul li a {
     text-decoration: none;
     color: black;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav ul li a:hover {
+    color: #8C1D40; /* ASU Maroon Hover */
 }
 
 /* Hero Section */
 .hero {
-    background-color: #8C1D40;
+    background-color: #8C1D40; /* ASU Maroon */
     color: white;
     text-align: center;
-    padding: 60px 0;
+    padding: 80px 0;
+}
+
+.hero h2 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.hero .button {
+    background-color: white;
+    color: #8C1D40;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.hero .button:hover {
+    background-color: #8C1D40;
+    color: white;
+    border: 2px solid white;
 }
 
 /* About Section */
 .about {
-    padding: 50px 0;
+    padding: 60px 0;
     text-align: center;
+}
+
+.about h2 {
+    color: #8C1D40; /* ASU Maroon */
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 /* Leadership Section */
 .leadership {
-    padding: 50px 0;
+    padding: 60px 0;
     text-align: left;
 }
 
 .leadership h2 {
     text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #8C1D40; /* ASU Maroon */
 }
 
 .team-member {
     border-left: 5px solid #8C1D40;
-    padding-left: 15px;
-    margin-bottom: 20px;
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.team-member h4 {
+    color: black;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.team-member p {
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 /* Footer */
@@ -80,28 +142,35 @@ body {
     background-color: black;
     color: white;
     text-align: center;
-    padding: 40px 0;
-    margin-top: 50px;
+    padding: 60px 0;
+    margin-top: 60px;
 }
 
 .footer p {
     margin: 0;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .footer-links {
     list-style: none;
     padding: 0;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .footer-links li {
     display: inline;
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 .footer-links li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    font-size: 18px;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links li a:hover {
+    color: #8C1D40; /* ASU Maroon Hover */
 }
