@@ -18,14 +18,19 @@ body {
 .header {
     background-color: white;
     color: black;
-    padding: 10px 15px;
+    /* Remove padding from header; container will handle inner spacing */
+    width: 100%;
+    height: 60px;
+    border-bottom: 3px solid #8C1D40;
+    position: relative;
+}
+
+/* Header inner container to center content */
+.header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 3px solid #8C1D40;
-    width: 100%;
-    height: 60px;
-    position: relative;
+    padding: 10px 15px;
 }
 
 /* Logo */
@@ -44,10 +49,9 @@ body {
 .nav {
     display: flex;
     align-items: center;
-    /* Removed margin-right so the nav isn’t pushed too far right */
+    /* Remove extra margin to avoid pushing content off */
 }
 
-/* Navigation list for desktop */
 .nav ul {
     display: flex;
     padding: 0;
@@ -84,13 +88,12 @@ body {
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
-    .header {
-        flex-direction: row;
-        padding: 10px 15px;
+    .header .container {
         position: relative;
     }
 
-    /* Show the menu toggle button and center it horizontally */
+    /* Show the menu toggle button.
+       Position it relative to the container so it’s centered horizontally. */
     .menu-toggle {
         display: block;
         font-size: 28px;
@@ -99,20 +102,20 @@ body {
         cursor: pointer;
         padding: 10px;
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        right: 15px; /* Align to container's right edge */
         top: 15px;
     }
 
-    /* Hide nav by default; center the mobile nav items */
+    /* Hide nav by default; center the mobile nav items relative to the container */
     .nav {
         display: none;
         flex-direction: column;
         align-items: center;
         position: absolute;
         top: 60px;
-        left: 0;
-        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%; /* Matches container width */
         background-color: white;
         text-align: center;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
