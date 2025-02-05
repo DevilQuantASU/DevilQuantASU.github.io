@@ -18,18 +18,18 @@ body {
 .header {
     background-color: white;
     color: black;
-    padding: 10px 0;
+    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 3px solid #8C1D40;
     width: 100%;
     height: 60px;
+    position: relative;
 }
 
 /* Logo */
 .logo {
-    margin-left: 20px;
     display: flex;
     align-items: center;
 }
@@ -59,16 +59,37 @@ body {
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        padding: 10px 15px;
+        position: relative;
+    }
+
+    /* Show the menu toggle button */
+    .menu-toggle {
+        display: block;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 10px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    /* Hide nav by default */
     .nav {
-        display: none; /* Hide navigation by default */
+        display: none;
+        flex-direction: column;
         position: absolute;
         top: 60px;
         left: 0;
         width: 100%;
         background-color: white;
         text-align: center;
-        flex-direction: column;
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
     }
 
     .nav ul {
@@ -79,26 +100,31 @@ body {
 
     .nav ul li {
         width: 100%;
-        margin: 0;
-        padding: 10px 0;
+        padding: 12px 0;
         border-bottom: 1px solid #ddd;
     }
 
     .nav ul li a {
         display: block;
-        padding: 10px;
-        font-size: 16px;
+        padding: 12px;
+        font-size: 18px;
     }
 
-    /* Show the menu toggle button */
-    .menu-toggle {
-        display: block;
-        margin-right: 20px;
-    }
-
-    /* When menu is open */
+    /* Animate dropdown */
     .nav.open {
         display: flex;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }
 
