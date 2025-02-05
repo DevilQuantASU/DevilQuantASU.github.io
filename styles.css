@@ -41,11 +41,10 @@ body {
 }
 
 /* Navigation */
-/* Add a right margin to shift the nav buttons a bit left off the edge */
 .nav {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    /* Removed margin-right so the nav isn’t pushed too far right */
 }
 
 /* Navigation list for desktop */
@@ -91,7 +90,7 @@ body {
         position: relative;
     }
 
-    /* Show the menu toggle button and move it a bit left */
+    /* Show the menu toggle button and center it horizontally */
     .menu-toggle {
         display: block;
         font-size: 28px;
@@ -100,7 +99,8 @@ body {
         cursor: pointer;
         padding: 10px;
         position: absolute;
-        right: 20px; /* Adjusted from 15px to 20px */
+        left: 50%;
+        transform: translateX(-50%);
         top: 15px;
     }
 
@@ -218,13 +218,13 @@ body {
 /* Leadership Section */
 .leadership {
     padding: 60px 0;
-    text-align: center; /* Ensure section is centered */
+    text-align: center;
 }
 
 .leadership h2 {
     font-size: 28px;
     font-weight: 700;
-    color: #8C1D40; /* ASU Maroon */
+    color: #8C1D40;
     margin-bottom: 20px;
 }
 
@@ -285,7 +285,7 @@ body {
 }
 
 .footer-links li a:hover {
-    color: #8C1D40; /* ASU Maroon Hover */
+    color: #8C1D40;
 }
 
 /* Projects Section */
@@ -297,7 +297,7 @@ body {
 .projects h2 {
     font-size: 28px;
     font-weight: 700;
-    color: #8C1D40; /* ASU Maroon */
+    color: #8C1D40;
 }
 
 .projects p {
