@@ -91,7 +91,6 @@ body {
     cursor: pointer;
     padding: 10px;
     /* Desktop fallback – not shown */
-    position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -109,10 +108,7 @@ body {
         background: none;
         border: none;
         cursor: pointer;
-        padding: 10px;
-        position: absolute;
-        right: 15px;
-        top: 15px;
+        padding: 0;
         /* Remove centering for mobile – it will now sit at the right edge of the container */
         transform: none;
     }
@@ -143,6 +139,7 @@ body {
         width: 100%;
         padding: 12px 0;
         border-bottom: 1px solid #ddd;
+        margin: 0;
     }
     
     .nav ul li a {
@@ -154,7 +151,6 @@ body {
     /* Animate dropdown */
     .nav.open {
         display: flex;
-        animation: fadeIn 0.3s ease-in-out;
     }
     
     @keyframes fadeIn {
