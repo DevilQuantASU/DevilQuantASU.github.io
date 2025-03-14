@@ -24,7 +24,14 @@ document.addEventListener("DOMContentLoaded", async function () {
                     </a>
                 </h3>
                 <p>${project.text}</p>
+                <br>
             `;
+
+            if (project.application_link !== "closed") {
+              projectElement.innerHTML += `<p><b>Apply:</b> <a href="${project.application_link}" target="_blank" rel="noopener noreferrer"></p>`
+            } else {
+              projectElement.innerHTML += `<p><b>Apply:</b> Applications closed.</p>`
+            }
 
             projectListContainer.appendChild(projectElement);
         });
